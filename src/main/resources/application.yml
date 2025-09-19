@@ -1,0 +1,13 @@
+server:
+  port: 7050
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/myservice_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+    username: postgres
+    password: 6969
+  jpa:
+    hibernate:
+      ddl-auto: update   # <- DB entries auto update
+    show-sql: true       # <- SQL true
+     
