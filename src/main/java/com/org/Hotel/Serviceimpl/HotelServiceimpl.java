@@ -1,8 +1,7 @@
 package com.org.Hotel.Serviceimpl;
-import java.util.List;
+import java.util.List;  
 import java.util.UUID;
 import java.util.stream.Collectors;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +20,6 @@ public class HotelServiceimpl implements HotelService {
 
 	@Autowired
 	private ModelMapper modelMapper;
-	
 	
 	@Override
     public HotelDto createHotel(HotelDto hotelDto) {
