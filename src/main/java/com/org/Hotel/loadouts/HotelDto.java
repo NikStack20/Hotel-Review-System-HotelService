@@ -1,6 +1,6 @@
 package com.org.Hotel.loadouts;
-import java.util.List;
-
+import java.util.ArrayList;
+import java.util.List; 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,4 +25,6 @@ public class HotelDto {
 	
 	@NotEmpty
 	private List<String> facility;
+	
+	 private List<RatingDto> ratings = new ArrayList<>();
 }

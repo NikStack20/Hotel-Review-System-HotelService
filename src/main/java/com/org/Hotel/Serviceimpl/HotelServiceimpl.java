@@ -1,15 +1,20 @@
 package com.org.Hotel.Serviceimpl;
-import java.util.List;  
+import java.time.Duration;
+import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.org.Hotel.GlobalExceptionHandler.DBExceptions;
+import org.springframework.web.reactive.function.client.WebClient;
 import com.org.Hotel.Repository.HotelRepo;
 import com.org.Hotel.Service.entities.Hotel;
 import com.org.Hotel.Services.HotelService;
 import com.org.Hotel.loadouts.HotelDto;
+import com.org.Hotel.loadouts.RatingDto;
  
 
 @Service
@@ -20,6 +25,12 @@ public class HotelServiceimpl implements HotelService {
 
 	@Autowired
 	private ModelMapper modelMapper;
+
+    private WebClient webClient;
+	
+	private Logger logger = LoggerFactory.getLogger(HotelServiceimpl.class);
+    
+    
 	
 	@Override
     public HotelDto createHotel(HotelDto hotelDto) {
@@ -43,8 +54,27 @@ public class HotelServiceimpl implements HotelService {
 
 	@Override
 	public HotelDto getHotel(String hotelId) {
-		Hotel hotel = this.hotelRepo.findById(hotelId).orElseThrow(() -> new DBExceptions("Hotel with given hotelId:" + hotelId + ", not Found on server x_X"));
-		return this.modelMapper.map(hotel, HotelDto.class);
+
+	    Hotel hotel = hotelRepo.findById(hotelId)
+	            .orElseThrow(() -> new RuntimeException("Hotel not found"));
+
+	    // ---- Call Rating Service to get ratings of this hotel ----
+	    List<RatingDto> ratingDtos = webClient.get()
+	            .uri("hotels/getHotel/{hotelId}", hotelId)
+	            .retrieve()
+	            .bodyToFlux(RatingDto.class)
+	            .collectList()
+	            .timeout(Duration.ofSeconds(3))
+	            .onErrorReturn(Collections.emptyList())
+	            .block();
+
+	    logger.info("Ratings fetched for hotel {} -> {}", hotelId, ratingDtos.size());
+
+	    // map Hotel → HotelDto
+	    HotelDto dto = modelMapper.map(hotel, HotelDto.class);
+	    dto.setRatings(ratingDtos);
+	    return dto;
 	}
+
 
 }
