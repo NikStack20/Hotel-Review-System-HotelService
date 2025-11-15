@@ -1,4 +1,4 @@
-package com.org.Hotel.GlobalExceptionHandler;
+package com.org.Hotel.Service.GlobalExceptionHandler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

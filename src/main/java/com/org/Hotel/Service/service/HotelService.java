@@ -1,8 +1,8 @@
-package com.org.Hotel.Services;
+package com.org.Hotel.Service.service;
 
-import java.util.List;
+import java.util.List; 
 
-import com.org.Hotel.loadouts.HotelDto;
+import com.org.Hotel.Service.loadouts.HotelDto;
 
 public interface HotelService {
 

@@ -1,4 +1,4 @@
-package com.org.Hotel.loadouts;
+package com.org.Hotel.Service.loadouts;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

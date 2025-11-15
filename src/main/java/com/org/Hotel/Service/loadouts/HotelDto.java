@@ -1,4 +1,4 @@
-package com.org.Hotel.loadouts;
+package com.org.Hotel.Service.loadouts;
 import java.util.ArrayList;
 import java.util.List; 
 import jakarta.validation.constraints.NotEmpty;

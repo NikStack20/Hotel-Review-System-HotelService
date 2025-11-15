@@ -1,5 +1,5 @@
-package com.org.Hotel.GlobalExceptionHandler;
-import org.springframework.http.HttpStatus;
+package com.org.Hotel.Service.loadouts;
+import java.time.Instant;  
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -12,6 +12,8 @@ public class ApiResponse {
 
 	private String message;
 	private boolean success;
-	private HttpStatus status;
+	private int status;
+	    private String path;     // request URI (optional)
+	    private Instant timestamp; 
 
 }

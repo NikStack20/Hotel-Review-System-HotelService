@@ -1,4 +1,4 @@
-package com.org.Hotel.Controller;
+package com.org.Hotel.Service.Controller;
 import java.util.List; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.org.Hotel.Services.HotelService;
-import com.org.Hotel.loadouts.HotelDto;
+
+import com.org.Hotel.Service.loadouts.HotelDto;
+import com.org.Hotel.Service.service.HotelService;
+
 import jakarta.validation.Valid;
 
 
@@ -36,7 +38,7 @@ public class HotelController {
 	}
 	
 	//get all
-	@GetMapping("/") 
+	@GetMapping("/")
 	ResponseEntity<List<HotelDto>> getAll() {
 		  return new ResponseEntity<List<HotelDto>> (this.hotelService.getAllHotels(), HttpStatus.OK);
 	}

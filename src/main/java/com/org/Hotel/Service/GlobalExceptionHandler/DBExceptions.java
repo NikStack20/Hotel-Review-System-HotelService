@@ -1,4 +1,4 @@
-package com.org.Hotel.GlobalExceptionHandler;
+package com.org.Hotel.Service.GlobalExceptionHandler;
 
 public class DBExceptions extends RuntimeException {
 
