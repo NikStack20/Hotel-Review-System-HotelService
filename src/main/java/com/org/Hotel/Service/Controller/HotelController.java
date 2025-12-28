@@ -1,5 +1,5 @@
 package com.org.Hotel.Service.Controller;
-import java.util.List; 
+import java.util.List;  
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.org.Hotel.Service.loadouts.HotelDto;
 import com.org.Hotel.Service.service.HotelService;
-
 import jakarta.validation.Valid;
 
 
@@ -36,6 +34,12 @@ public class HotelController {
 	ResponseEntity<HotelDto> getHotel(@PathVariable String hotelId) {
 		return new ResponseEntity<HotelDto> (this.hotelService.getHotel(hotelId), HttpStatus.OK);
 	}
+	
+	//get single
+		@GetMapping("/getHotelByUserId/{userId}")
+		ResponseEntity<HotelDto> getHotelByUserId(@PathVariable String userId) {
+			return new ResponseEntity<HotelDto> (this.hotelService.getHotel(userId), HttpStatus.OK);
+		}
 	
 	//get all
 	@GetMapping("/")

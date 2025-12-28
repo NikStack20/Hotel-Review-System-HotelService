@@ -13,7 +13,7 @@ public class ApiResponse {
 	private String message;
 	private boolean success;
 	private int status;
-	    private String path;     // request URI (optional)
-	    private Instant timestamp; 
+	private String path;     // request URI (optional)
+	private Instant timestamp; 
 
 }

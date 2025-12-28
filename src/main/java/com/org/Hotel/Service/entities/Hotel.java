@@ -1,5 +1,5 @@
 package com.org.Hotel.Service.entities;
-import java.util.List;
+import java.util.List; 
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;

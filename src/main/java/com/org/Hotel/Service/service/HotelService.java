@@ -14,7 +14,5 @@ public interface HotelService {
 
 	// getSingleHotel
 	HotelDto getHotel(String hotelId);
-	
-	
 
 }
