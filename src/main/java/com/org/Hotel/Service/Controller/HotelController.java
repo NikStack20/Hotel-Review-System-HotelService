@@ -1,5 +1,5 @@
 package com.org.Hotel.Service.Controller;
-import java.util.List;  
+import java.util.List;   
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,7 +42,7 @@ public class HotelController {
 		}
 	
 	//get all
-	@GetMapping("/")
+	@GetMapping
 	ResponseEntity<List<HotelDto>> getAll() {
 		  return new ResponseEntity<List<HotelDto>> (this.hotelService.getAllHotels(), HttpStatus.OK);
 	}
