@@ -3,9 +3,11 @@ server:
 
 spring:
   application:
-    name: HOTEL-SERVICE 
+    name: HOTEL-SERVICE
+  profiles:
+      active: dev 
   datasource:
-    url: jdbc:postgresql://localhost:5432/myservice_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+    url: jdbc:postgresql://localhost:5432/myservice_db
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
   jpa:
